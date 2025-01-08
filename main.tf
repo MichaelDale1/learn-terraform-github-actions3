@@ -1,6 +1,11 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
+
+#Change region and move provider to the top
+provider "aws" {
+  region = "us-east-1"
+}
 terraform {
   required_providers {
     aws = {
@@ -15,17 +20,15 @@ terraform {
   required_version = ">= 1.1.0"
 
   cloud {
-    organization = "REPLACE_ME"
+    organization = "Maximus1-7-25"
 
     workspaces {
-      name = "gh-actions-demo"
+      name = "learn-terraform-github-actions"
     }
   }
 }
 
-provider "aws" {
-  region = "us-west-2"
-}
+
 
 resource "random_pet" "sg" {}
 
@@ -42,7 +45,8 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = ["099720109477"] # Canonical
+#Changed to AWS account #
+  owners = ["314146336018"] # Canonical
 }
 
 resource "aws_instance" "web" {
