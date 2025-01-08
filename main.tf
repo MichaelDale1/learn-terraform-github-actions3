@@ -34,7 +34,10 @@ resource "random_pet" "sg" {}
 
 data "aws_ami" "ubuntu" {
   most_recent = true
+  #Suggested Serge Change
+  owners      = ["amazon"]
 
+/*
   filter {
     name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
@@ -43,6 +46,14 @@ data "aws_ami" "ubuntu" {
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
+  }
+*/
+
+
+  #Suggested Serge Change
+filter {
+    name   = "name"
+    values = ["al2023-ami-2023.*-x86_64"]
   }
 
 #Changed to AWS account #
